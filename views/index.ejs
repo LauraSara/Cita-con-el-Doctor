@@ -77,7 +77,7 @@
               <%= cita.time %>
             </span></td>
           <td><span>
-              <%= user.name %>
+            <%= cita.User.name %>
             </span></td>
           <td><span>
               <%= cita.complain %>
@@ -124,28 +124,6 @@
         });
       });
 
-      /*
-
-      const date = $('#form6Example1').val();
-      const time = $('#form6Example2').val();
-      const complain = $('#form6Example7').val();
-
-    
-      $('#tablaCitas').append(` <tr>
-                                <th scope="row"></th>
-                                <td><span> <input type="date" id=""> ${date} </span></td>
-                                <td> <span> <input type="time" id=""> ${time} </span> </td>
-                                <td><%=user.name%></td>
-                                <td> ${complain} </td>
-                                <td>
-                                  <button type="button" class="btn btn-danger btn-sm px-3">
-                                    <i class="fas fa-times"></i>
-                                  </button>
-                                </td>
-                              </tr>
-                        ` )
-      console.log(complain);
-*/
     });
   </script>
 

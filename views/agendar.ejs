@@ -40,6 +40,20 @@
 <body>
   <form action="/crear" method="POST">
     <h1>New Appointment</h1>
+    <!--PACIENTE-->
+    <div class="form-outline mb-3" style="width: 22rem">
+      <input
+        name="usuario"
+        class="form-control"
+        id="formControlDisabled"
+        type="text"
+        placeholder="Disabled input"
+        value="<%= user.name %>"
+        aria-label="disabled input example"
+        disabled
+      />
+      <label class="form-label" for="formControlDisabled"></label>
+    </div>
 
     <!--DATE-->
     <div class="row mb-4">

@@ -46,18 +46,25 @@ router.post("/crear",  async (req, res) => {
   let nuevaAgenda = await Cita.create({    
     date: req.body.date,
     time: req.body.time,
-    complain: req.body.complain,
-    UserId: req.body.UserId
+    complain: req.body.complain,  
+    //usuario: req.body.usuario,
+    UserId: req.session.user.id
   });   
   console.log(nuevaAgenda);
   res.redirect('/');
 });
 
 router.get('/eliminar/:id', async (req,res) => {
-  console.log("Elminarrrrrr");
-  //configurar para que solo elimine el paciente 
-  const eliminar = await Cita.findByPk(req.params.id);
-  await eliminar.destroy();
+  /*
+  if(UserId != user.name){
+    return res.send("Error, no tienes permiso para eliminar esta cita");
+  }else{
+  }
+  */
+    console.log("Elminarrrrrr");
+    //configurar para que solo elimine el paciente 
+    const eliminar = await Cita.findByPk(req.params.id);
+    await eliminar.destroy();
 
   res.redirect("/")
 });
