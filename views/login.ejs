@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet" />
+  <!-- MDB -->
+  <script  type="text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js" ></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <style>
+    body{
+      height: 600px;
+      color: white;
+      padding: 100px;
+      background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
+
+
+    }
+    input label{
+      color: white;
+    }
+  </style>
+</head>  
+<body>  
+  
+  <!--Formularios-->
+  <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-link active"
+        id="tab-login"
+        data-mdb-toggle="pill"
+        href="#pills-login"
+        role="tab"
+        aria-controls="pills-login"
+        aria-selected="true"
+        >Iniciar Sesión</a
+      >
+    </li>
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-link"
+        id="tab-register"
+        data-mdb-toggle="pill"
+        href="#pills-register"
+        role="tab"
+        aria-controls="pills-register"
+        aria-selected="false"
+        >Registrarse</a
+      >
+    </li>
+  </ul>
+  <!-- Pills navs -->
+  
+  <!-- Pills content -->
+  <div class="tab-content">
+    <div
+      class="tab-pane fade show active"
+      id="pills-login"
+      role="tabpanel"
+      aria-labelledby="tab-login"
+    >
+      <!--INICIAR SESION-->
+      <form id="form-login" action="/login" method="POST" class="col-auto">
+  
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+          <input name="email" type="email" id="loginName" class="form-control" />
+          <label class="form-label" for="loginName">Email</label>
+        </div>
+  
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+          <input name="password" type="password" id="loginPassword" class="form-control" />
+          <label class="form-label" for="loginPassword">Constraseña</label>
+        </div>
+  
+        <!-- 2 column grid layout -->
+        <div class="row mb-4">
+          <div class="col d-flex justify-content-center">
+            <!-- Checkbox -->
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="form1Example3"
+                checked
+              />
+              <label class="form-check-label" for="form1Example3"> Recordar sesion </label>
+            </div>
+          </div>
+          
+        </div>
+  
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4">Ingresar</button>
+  
+        
+      </form>
+    </div>
+    <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register" >
+
+    <!--REGISTRARSE-->
+      <form id="form-register" action="/register" name="form" method="POST" class="col-auto" onSubmit="return verificarClave()">
+        <!-- Name input -->
+        <div class="form-outline mb-4">
+          <input name="name" type="text" id="registerName" class="form-control" />
+          <label class="form-label" for="registerName">Nombre</label>
+        </div>
+  
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+          <input name="email" type="email" id="registerEmail" class="form-control" />
+          <label class="form-label" for="registerEmail">Email</label>
+        </div>
+  
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+          <input name="password" type="password" id="registerPassword" class="form-control" />
+          <label class="form-label" for="registerPassword">Contraseña</label>
+        </div>
+  
+        <!-- Repeat Password input -->
+        <div class="form-outline mb-4">
+          <input name="password_confirm" type="password" id="registerRepeatPassword" class="form-control" />
+          <label class="form-label" for="registerRepeatPassword">Confirme contraseña</label>
+        </div>
+  
+        <!-- Checkbox -->
+        <div class="form-check d-flex justify-content-center mb-4">
+          <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked aria-describedby="registerCheckHelpText"/>
+          <label class="form-check-label" for="registerCheck"> Acepto los terminos y condiciones </label>
+        </div>
+  
+        <!-- Submit button -->
+        <!--
+          
+        -->
+        <button type="submit" class="btn btn-primary btn-block mb-3">Registrarme</button>
+      </form>
+    </div>
+  </div>
+  
+
+  <script>
+    /*
+    <% for (var error of errors) { %>
+     M.toast({html: '<%=error%>'});
+   <% } %> */
+
+
+   //para verificar que las contraseñas ingresadas sean iguales
+   function verificarClave(){
+     let password = document.form.password.value;
+     let password_confirm = document.form.password_confirm.value;
+
+     if (password != password_confirm) {
+       alert ("Las contraseñas no coinciden");
+       document.form
+       return false;
+     }else {
+       document.form.submit;
+       return true;
+     }
+   }
+  </script>
+      
+</body>
+</html>

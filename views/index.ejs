@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/main.css">
+  <!-- MDB -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
+
+  <!--jQuery-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <!--ENCABEZADO-->
+  <nav class="navbar navbar-light bg-light">
+    <div id="encabezado" class="container-fluid">
+      <h1>Doctor's Appointments</h1>
+      <form id="search" class="d-flex input-group w-auto">
+        <input type="search" class="form-control" aria-label="Search" />
+        <button class="btn btn-outline-primary" type="button" data-mdb-ripple-color="dark">
+          Search
+        </button>
+      </form>
+    </div>
+    <button id="logout" type="button" class="btn btn-primary btn-sm">Logout</button>
+  </nav>
+
+
+  <!--TABLA DE CITAS-->
+  <table class="table align-middle">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Date</th>
+        <th scope="col">Time</th>
+        <th scope="col">Patient Name</th>
+        <th scope="col">Complain</th>
+        <th scope="col">Cancel</th>
+      </tr>
+    </thead>
+    <tbody id="tablaCitas">
+    <!--
+      <tr>
+        <th scope="row">1</th>
+        <td><span> <input type="date" id=""> </span></td>
+        <td> <span> <input type="time" id=""> </span> </td>
+        <td>texto</td>
+        <td>texto</td>
+        <td>
+          <button type="button" class="btn btn-danger btn-sm px-3">
+            <i class="fas fa-times"></i>
+          </button>
+        </td>
+      </tr>
+
+    --> 
+      
+      <% for (let cita of citas) { %>
+        <tr>
+          <th scope="row"><%= cita.id %></th>
+          <td><span>
+              <%= cita.date %>
+            </span></td>
+          <td><span>
+              <%= cita.time %>
+            </span></td>
+          <td><span>
+              <%= user.name %>
+            </span></td>
+          <td><span>
+              <%= cita.complain %>
+            </span></td>
+          <td>
+            <a href="/eliminar/<%= cita.id %>"><button id="btnCancel" type="button" class="btn btn-danger btn-sm px-3">
+              <i class="fas fa-times"></i>
+            </button> </a>
+            
+          </td>
+        </tr>
+      <% } %>
+
+      
+
+    </tbody>
+  </table>
+
+
+  <!--AGREGAR NUEVA CITA
+    <form action="vistaCrear">
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button id="agregar" class="btn btn-primary" type="submit">Add New Appointment</button>
+      </div>
+      
+    </form>
+  -->
+  <div class="d-grid gap-2">
+
+    <a href="/vistaCrear" id="addA" class="btn btn-primary" role="button" aria-pressed="true">Add New Appointment</a>
+  </div>
+
+  
+
+  <script>
+    $(document).ready(function () {
+      $('#logout').on('click', function () {
+        document.getElementById('logout').addEventListener('click', () => {
+          const SalirChat = confirm('Vuelve pronto');
+          if (SalirChat) {
+            window.location = 'login';
+          } else {
+          }
+        });
+      });
+
+      /*
+
+      const date = $('#form6Example1').val();
+      const time = $('#form6Example2').val();
+      const complain = $('#form6Example7').val();
+
+    
+      $('#tablaCitas').append(` <tr>
+                                <th scope="row"></th>
+                                <td><span> <input type="date" id=""> ${date} </span></td>
+                                <td> <span> <input type="time" id=""> ${time} </span> </td>
+                                <td><%=user.name%></td>
+                                <td> ${complain} </td>
+                                <td>
+                                  <button type="button" class="btn btn-danger btn-sm px-3">
+                                    <i class="fas fa-times"></i>
+                                  </button>
+                                </td>
+                              </tr>
+                        ` )
+      console.log(complain);
+*/
+    });
+  </script>
+
+</body>
+
+</html>
